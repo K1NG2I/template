@@ -1,0 +1,138 @@
+{
+  "header": {
+    "logo": "/assets/images/1782406929487-65888470.JPG",
+    "logoWidth": 40,
+    "logoHeight": 40,
+    "navLinks": [
+      {
+        "label": "Home",
+        "path": "/"
+      },
+      {
+        "label": "Shop",
+        "path": "/shop"
+      }
+    ]
+  },
+  "hero": {
+    "video": "/assets/videos/1782407129765-972191783.mp4",
+    "posterImage": "/assets/images/1782406938451-349997885.HEIC",
+    "headline": "Welcome to Our Store",
+    "subtext": "Discover amazing products tailored just for you",
+    "ctaText": "Shop Now",
+    "ctaLink": "/shop"
+  },
+  "shopFlash": {
+    "heading": "Featured Products"
+  },
+  "products": [
+    {
+      "title": "Product One",
+      "images": [
+        "/assets/images/1782406951125-553862163.jpg",
+        "/assets/images/1782406956324-688340711.jpg"
+      ],
+      "synopsis": "Exceptional quality meets modern design.",
+      "description": "Experience unmatched craftsmanship with Product One.",
+      "featured": true
+    },
+    {
+      "title": "Product Two",
+      "images": [
+        "/assets/images/product2.jpg",
+        "/assets/images/product4.jpg"
+      ],
+      "synopsis": "Crafted for durability and everyday comfort.",
+      "description": "Product Two is built to last.",
+      "featured": true
+    },
+    {
+      "title": "Product Three",
+      "images": [
+        "/assets/images/product3.jpg",
+        "/assets/images/product1.jpg"
+      ],
+      "synopsis": "Innovative features at an unbeatable value.",
+      "description": "Product Three brings cutting-edge innovation.",
+      "featured": true
+    },
+    {
+      "title": "Product Four",
+      "images": [
+        "/assets/images/product4.jpg",
+        "/assets/images/product2.jpg",
+        "/assets/images/product1.jpg"
+      ],
+      "synopsis": "Timeless style with a contemporary twist.",
+      "description": "Product Four combines timeless design with modern functionality.",
+      "featured": true
+    },
+    {
+      "title": "New Product",
+      "images": [
+        "/assets/images/1782407610164-656670245.jpeg"
+      ],
+      "synopsis": "",
+      "description": "",
+      "featured": false
+    }
+  ],
+  "showcase": {
+    "heading": "Showcase",
+    "cards": [
+      {
+        "title": "Premium Product",
+        "image": "/assets/images/premium1.jpg",
+        "synopsis": "Detailed description of this premium product. It has amazing features that will blow your mind."
+      },
+      {
+        "title": "Another Great Product",
+        "image": "/assets/images/premium2.jpg",
+        "synopsis": "Another amazing product with incredible value. This product will change the way you think about quality."
+      }
+    ]
+  },
+  "about": {
+    "text": "We are a passionate team dedicated to bringing you the best products at the best prices. Our mission is to make quality accessible to everyone. Founded in 2024, we have grown from a small startup to a trusted brand.",
+    "rules": [
+      "Customer satisfaction is our top priority",
+      "We guarantee the quality of all our products",
+      "Free shipping on orders over $50",
+      "30-day hassle-free return policy",
+      "24/7 customer support available",
+      "Eco-friendly packaging on all orders"
+    ]
+  },
+  "fonts": {
+    "family": "Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
+    "googleFontLink": ""
+  },
+  "colors": {
+    "dark": {
+      "--bg": "#2c2c2c",
+      "--card": "#2c2c2c",
+      "--accent": "#ffffff",
+      "--muted": "#c7c7d7",
+      "--primary": "#ffffff",
+      "--nav-bg": "#2c2c2c",
+      "--bg-secondary": "#222222",
+      "--bg-tertiary": "#1a1a1a",
+      "--border": "rgba(255, 255, 255, 0.1)"
+    },
+    "light": {
+      "--bg": "#f5f5f5",
+      "--card": "#ffffff",
+      "--accent": "#000000",
+      "--muted": "#555555",
+      "--primary": "#1a1a1a",
+      "--nav-bg": "#ffffff",
+      "--bg-secondary": "#e8e8e8",
+      "--bg-tertiary": "#d8d8d8",
+      "--border": "rgba(0, 0, 0, 0.1)"
+    }
+  },
+  "footer": {
+    "text": "© 2024 Your Company Name. All rights reserved.",
+    "email": "contact@example.com"
+  }
+}
