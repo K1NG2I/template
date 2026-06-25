@@ -6,6 +6,9 @@
     "dev:server": "npm run dev --prefix server",
     "dev:client": "npm run dev --prefix client"
   },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.1"
+  },
   "devDependencies": {
     "concurrently": "^9.0.1"
   }

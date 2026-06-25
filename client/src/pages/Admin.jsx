@@ -1,23 +1,21 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useConfig } from '../context/ConfigContext';
+import { uploadFile } from '../lib/supabase';
 
-function ImageUpload({ value, onChange, password }) {
+function ImageUpload({ value, onChange }) {
   const [uploading, setUploading] = useState(false);
 
   async function handleFile(e) {
     const file = e.target.files?.[0];
     if (!file) return;
     setUploading(true);
-    const form = new FormData();
-    form.append('file', file);
-    const res = await axios.post('/api/upload', form, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-        'x-admin-password': password,
-      },
-    });
-    onChange(res.data.url);
+    try {
+      const url = await uploadFile(file);
+      onChange(url);
+    } catch {
+      alert('Upload failed');
+    }
     setUploading(false);
   }
 
@@ -43,22 +41,19 @@ function ImageUpload({ value, onChange, password }) {
   );
 }
 
-function VideoUpload({ value, onChange, password }) {
+function VideoUpload({ value, onChange }) {
   const [uploading, setUploading] = useState(false);
 
   async function handleFile(e) {
     const file = e.target.files?.[0];
     if (!file) return;
     setUploading(true);
-    const form = new FormData();
-    form.append('file', file);
-    const res = await axios.post('/api/upload', form, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-        'x-admin-password': password,
-      },
-    });
-    onChange(res.data.url);
+    try {
+      const url = await uploadFile(file);
+      onChange(url);
+    } catch {
+      alert('Upload failed');
+    }
     setUploading(false);
   }
 
@@ -82,22 +77,19 @@ function VideoUpload({ value, onChange, password }) {
   );
 }
 
-function MultiImageUpload({ images, onAdd, onRemove, onUpdate, password }) {
+function MultiImageUpload({ images, onAdd, onRemove }) {
   const [uploading, setUploading] = useState(false);
 
   async function handleFile(e) {
     const file = e.target.files?.[0];
     if (!file) return;
     setUploading(true);
-    const form = new FormData();
-    form.append('file', file);
-    const res = await axios.post('/api/upload', form, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-        'x-admin-password': password,
-      },
-    });
-    onAdd(res.data.url);
+    try {
+      const url = await uploadFile(file);
+      onAdd(url);
+    } catch {
+      alert('Upload failed');
+    }
     setUploading(false);
   }
 
@@ -340,7 +332,7 @@ function AdminForm({ config, setConfig, password }) {
       <Section title="Header">
         <div>
           <label className="block text-xs text-[var(--muted)] mb-1">Logo</label>
-          <ImageUpload value={config.header.logo} onChange={(v) => update('header.logo', v)} password={password} />
+          <ImageUpload value={config.header.logo} onChange={(v) => update('header.logo', v)} />
           <div className="flex gap-2 mt-2">
             <div className="flex-1">
               <label className="block text-xs text-[var(--muted)] mb-1">Width (px)</label>
@@ -406,11 +398,11 @@ function AdminForm({ config, setConfig, password }) {
       <Section title="Hero Section">
         <div>
           <label className="block text-xs text-[var(--muted)] mb-1">Video</label>
-          <VideoUpload value={config.hero.video} onChange={(v) => update('hero.video', v)} password={password} />
+          <VideoUpload value={config.hero.video} onChange={(v) => update('hero.video', v)} />
         </div>
         <div>
           <label className="block text-xs text-[var(--muted)] mb-1">Poster Image</label>
-          <ImageUpload value={config.hero.posterImage} onChange={(v) => update('hero.posterImage', v)} password={password} />
+          <ImageUpload value={config.hero.posterImage} onChange={(v) => update('hero.posterImage', v)} />
         </div>
         <div>
           <label className="block text-xs text-[var(--muted)] mb-1">Headline</label>
@@ -465,7 +457,6 @@ function AdminForm({ config, setConfig, password }) {
                 images={card.images || []}
                 onAdd={(url) => addProductImage(i, url)}
                 onRemove={(imgIdx) => removeProductImage(i, imgIdx)}
-                password={password}
               />
             </div>
             <div>
@@ -498,7 +489,7 @@ function AdminForm({ config, setConfig, password }) {
             </div>
             <div>
               <label className="block text-xs text-[var(--muted)] mb-1">Image</label>
-              <ImageUpload value={item.image} onChange={(v) => updateShowcaseItem(i, 'image', v)} password={password} />
+              <ImageUpload value={item.image} onChange={(v) => updateShowcaseItem(i, 'image', v)} />
             </div>
             <div>
               <label className="block text-xs text-[var(--muted)] mb-1">Synopsis</label>
