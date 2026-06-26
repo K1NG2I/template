@@ -63,7 +63,7 @@ export default function Shop() {
                     </p>
                   )}
                   <ProductRating productIndex={config.products.indexOf(card)} />
-                  <p className="text-xs text-[var(--muted)] mb-3 leading-relaxed">{card.synopsis}</p>
+                  <p className="text-xs mb-3 leading-relaxed" style={{ color: 'var(--nav-bg)' }}>{card.synopsis}</p>
                   {stock !== null && stock < 5 && (
                     <span className="text-xs text-red-400 font-semibold block mb-2">Only {stock} stock left!</span>
                   )}

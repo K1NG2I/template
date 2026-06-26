@@ -17,7 +17,7 @@ export default function NotesSection() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {rules.map((rule, i) => (
             <div key={i} className="border border-[var(--border)] p-5 text-center bg-transparent">
-              <span className="text-sm text-[var(--muted)] leading-relaxed">{rule}</span>
+              <span className="text-sm leading-relaxed" style={{ color: 'var(--nav-bg)' }}>{rule}</span>
             </div>
           ))}
         </div>

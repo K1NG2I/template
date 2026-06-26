@@ -155,7 +155,7 @@ export default function ProductPage() {
             </p>
           )}
           <Rating average={avgRating} count={reviewCount} size="md" />
-          <p className="text-sm text-[var(--muted)] leading-relaxed mt-4 mb-6">
+          <p className="text-sm leading-relaxed mt-4 mb-6" style={{ color: 'var(--nav-bg)' }}>
             {product.description || product.synopsis}
           </p>
           {stock === null && (
@@ -223,7 +223,7 @@ export default function ProductPage() {
         {user && (
           <form onSubmit={submitReview} className="mb-6 space-y-3 max-w-md">
             <div className="flex items-center gap-2">
-              <span className="text-xs text-[var(--muted)]">Rating:</span>
+              <span className="text-xs" style={{ color: 'var(--nav-bg)' }}>Rating:</span>
               <select
                 value={rating}
                 onChange={(e) => setRating(Number(e.target.value))}
@@ -250,7 +250,7 @@ export default function ProductPage() {
           </form>
         )}
         {reviews.length === 0 ? (
-          <p className="text-sm text-[var(--muted)]">No reviews yet.</p>
+          <p className="text-sm" style={{ color: 'var(--nav-bg)' }}>No reviews yet.</p>
         ) : (
           <div className="space-y-4 max-w-lg">
             {reviews.map((r) => (
@@ -258,7 +258,7 @@ export default function ProductPage() {
                 <div className="flex items-center justify-between mb-1">
                   <span className="text-xs font-semibold text-[var(--primary)]">{r.user_name}</span>
                   {user && r.user_id === user.id && (
-                    <button onClick={() => deleteReview(r.id)} className="text-xs text-[var(--muted)] hover:text-red-400">Delete</button>
+                    <button onClick={() => deleteReview(r.id)} className="text-xs hover:text-red-400" style={{ color: 'var(--nav-bg)' }}>Delete</button>
                   )}
                 </div>
                 <Rating average={r.rating} size="sm" />
