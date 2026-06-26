@@ -163,7 +163,7 @@ export default function ProductPage() {
           )}
           {availableSizes.length > 0 && (
             <div className="mb-4">
-              <p className="text-xs text-[var(--muted)] mb-2">Select Size</p>
+              <p className="text-xs mb-2" style={{ color: 'var(--nav-bg)' }}>Select Size</p>
               <div className="flex flex-wrap gap-2">
                 {availableSizes.map(([size, s]) => (
                   <button

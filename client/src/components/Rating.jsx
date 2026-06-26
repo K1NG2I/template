@@ -4,7 +4,7 @@ export default function Rating({ average, count, size = 'sm' }) {
 
   const stars = Math.round(average);
   return (
-    <span className={`inline-flex items-center gap-1 ${starSize} text-[var(--muted)]`}>
+    <span className={`inline-flex items-center gap-1 ${starSize}`} style={{ color: 'var(--nav-bg)' }}>
       <span className="text-[var(--accent)]">
         {'★'.repeat(stars)}{'☆'.repeat(5 - stars)}
       </span>
