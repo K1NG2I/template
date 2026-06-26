@@ -1,11 +1,27 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useConfig } from '../context/ConfigContext';
 import { useTheme } from '../context/ThemeContext';
+import { useAuth } from '../context/AuthContext';
+import { supabase } from '../lib/supabase';
 
 export default function Header() {
   const { config } = useConfig();
   const { logo, navLinks } = config.header;
   const { theme, toggle } = useTheme();
+  const { user, signInWithGoogle, signOut } = useAuth();
+  const [cartCount, setCartCount] = useState(0);
+
+  useEffect(() => {
+    if (!user) { setCartCount(0); return; }
+    supabase
+      .from('cart_items')
+      .select('quantity')
+      .eq('user_id', user.id)
+      .then(({ data }) => {
+        setCartCount(data?.reduce((s, i) => s + i.quantity, 0) || 0);
+      });
+  }, [user]);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-[var(--nav-bg)] border-b border-[var(--border)]" style={{ height: 'var(--nav-height)' }}>
@@ -28,6 +44,31 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
+          <Link to="/cart" className="relative text-sm text-[var(--muted)] hover:text-[var(--primary)] transition-colors">
+            Cart
+            {cartCount > 0 && (
+              <span className="absolute -top-2 -right-4 text-[10px] bg-[var(--primary)] text-[var(--bg)] w-4 h-4 flex items-center justify-center">
+                {cartCount}
+              </span>
+            )}
+          </Link>
+          {user ? (
+            <div className="flex items-center gap-2">
+              {user.user_metadata?.avatar_url && (
+                <img src={user.user_metadata.avatar_url} alt="" className="w-6 h-6 rounded-full" />
+              )}
+              <span className="text-xs text-[var(--muted)] hidden sm:inline">
+                {user.user_metadata?.full_name || user.email?.split('@')[0]}
+              </span>
+              <button onClick={signOut} className="text-xs text-[var(--muted)] hover:text-red-400 transition-colors">
+                Sign Out
+              </button>
+            </div>
+          ) : (
+            <button onClick={signInWithGoogle} className="text-xs text-[var(--muted)] hover:text-[var(--primary)] transition-colors">
+              Sign In
+            </button>
+          )}
           <button
             onClick={toggle}
             className="ml-2 text-sm text-[var(--muted)] hover:text-[var(--primary)] transition-colors"

@@ -12,6 +12,8 @@ export function getSupabase() {
   return client;
 }
 
+export const supabase = createClient(supabaseUrl || '', supabaseAnonKey || '');
+
 export async function uploadFile(file, bucket = 'assets') {
   const sb = getSupabase();
   if (!sb) throw new Error('Supabase not configured');

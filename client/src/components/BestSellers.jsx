@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useConfig } from '../context/ConfigContext';
+import ProductRating from './ProductRating';
+import Rating from './Rating';
 
 export default function BestSellers() {
   const { config } = useConfig();
@@ -63,6 +65,10 @@ export default function BestSellers() {
                 )}
               </div>
               <h3 className="text-lg font-bold text-[var(--primary)] mb-1">{product.title}</h3>
+              {product.price > 0 && (
+                <p className="text-sm font-semibold text-[var(--accent)] mb-1">₹{product.price.toFixed(2)}</p>
+              )}
+              <ProductRating productIndex={config.products.indexOf(product)} />
               <p className="text-sm text-[var(--muted)] leading-relaxed">{product.synopsis}</p>
             </div>
           </div>

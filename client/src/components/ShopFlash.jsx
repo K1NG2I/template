@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useConfig } from '../context/ConfigContext';
+import ProductRating from './ProductRating';
 
 function lowestStock(product) {
   if (!product.sizes) return null;
@@ -50,7 +51,7 @@ export default function ShopFlash() {
             const stock = lowestStock(card);
             return (
               <Link
-                key={`${page}-${i}`}
+                key={`₹{page}-₹{i}`}
                 to="/shop"
                 className="group bg-[var(--card)] overflow-hidden border border-[var(--border)] hover:border-[var(--accent)] transition-all"
               >
@@ -69,6 +70,10 @@ export default function ShopFlash() {
                 </div>
                 <div className="p-3">
                   <h3 className="font-semibold text-sm text-[var(--primary)] mb-0.5">{card.title}</h3>
+                  {card.price > 0 && (
+                    <p className="text-xs font-semibold text-[var(--accent)] mb-0.5">₹{card.price.toFixed(2)}</p>
+                  )}
+                  <ProductRating productIndex={config.products.indexOf(card)} />
                   <p className="text-xs text-[var(--muted)] leading-relaxed">{card.synopsis}</p>
                   {stock !== null && stock < 5 && (
                     <span className="text-[10px] text-red-400 font-semibold block mt-1">Only {stock} stock left!</span>
