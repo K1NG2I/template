@@ -12,12 +12,12 @@ export default function AboutSection() {
           <p className="text-sm text-[var(--muted)] leading-relaxed">{text}</p>
         </div>
       </div>
-      <div className="flex-[2] bg-[var(--bg)] py-12">
+      <div className="flex-[2] py-12" style={{ backgroundColor: 'var(--nav-bg)' }}>
         <div className="max-w-3xl mx-auto">
           <h3 className="text-[clamp(24px,3vw,34px)] font-bold text-center mb-6 text-[var(--primary)]">To Be Noted</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {rules.map((rule, i) => (
-              <div key={i} className="border border-[var(--border)] p-5 text-center bg-[var(--card)]">
+              <div key={i} className="border border-[var(--border)] p-5 text-center bg-transparent">
                 <span className="text-sm text-[var(--muted)] leading-relaxed">{rule}</span>
               </div>
             ))}
