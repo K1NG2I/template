@@ -262,7 +262,7 @@ export default function ProductPage() {
                   )}
                 </div>
                 <Rating average={r.rating} size="sm" />
-                {r.comment && <p className="text-sm text-[var(--muted)] mt-1">{r.comment}</p>}
+                {r.comment && <p className="text-sm mt-1" style={{ color: 'var(--nav-bg)' }}>{r.comment}</p>}
               </div>
             ))}
           </div>
