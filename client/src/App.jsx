@@ -7,6 +7,7 @@ function ScrollToTop() {
   useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
   return null;
 }
+import DiscountBar from './components/DiscountBar';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -41,8 +42,9 @@ export default function App() {
   return (
     <div className="min-h-screen flex flex-col bg-[var(--bg)]">
       <ScrollToTop />
+      <DiscountBar />
       <Header />
-      <main className="flex-1 px-[10%] pt-[var(--nav-height)]">
+      <main className="flex-1 px-[10%] pt-[calc(var(--nav-height)+var(--discount-height))]">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Shop />} />

@@ -24,9 +24,9 @@ export default function Home() {
         <HeroSection />
       </div>
       <ShopFlash />
-      <ProductCards />
-      <BestSellers />
       <DailyEssentials />
+      <BestSellers />
+      <ProductCards />
       <AboutSection />
     </>
   );

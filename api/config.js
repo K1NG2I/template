@@ -6,6 +6,7 @@ const supabase = createClient(
 );
 
 const DEFAULT_CONFIG = {
+  discountBar: { text: '' },
   header: { logo: '', logoWidth: 40, logoHeight: 40, navLinks: [{ label: 'Home', path: '/' }, { label: 'Shop', path: '/shop' }] },
   fonts: { family: "Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif", googleFontLink: '' },
   hero: { video: '', posterImage: '', headline: 'Welcome', subtext: '', ctaText: 'Shop Now', ctaLink: '/shop' },

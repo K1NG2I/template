@@ -370,6 +370,17 @@ function AdminForm({ config, setConfig, password }) {
           </div>
           <button onClick={addNavLink} className="mt-2 text-xs text-[var(--primary)] opacity-60 hover:opacity-100">+ Add Link</button>
         </div>
+        <div>
+          <label className="block text-xs text-[var(--muted)] mb-1">Discount Bar Text</label>
+          <input
+            type="text"
+            value={config.discountBar?.text || ''}
+            onChange={(e) => update('discountBar.text', e.target.value)}
+            className="w-full bg-[var(--bg-secondary)] border border-[var(--border)] px-3 py-2 text-sm text-[var(--primary)]"
+            placeholder="e.g. Free shipping on orders over ₹500!"
+          />
+          <p className="text-xs text-[var(--muted)] mt-1">Leave empty to hide the bar</p>
+        </div>
       </Section>
 
       <Section title="Fonts">

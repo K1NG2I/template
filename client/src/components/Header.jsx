@@ -24,7 +24,7 @@ export default function Header() {
   }, [user]);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[var(--nav-bg)] border-b border-[var(--border)]" style={{ height: 'var(--nav-height)' }}>
+    <header className="fixed top-[var(--discount-height)] left-0 right-0 z-40 bg-[var(--nav-bg)] border-b border-[var(--border)]" style={{ height: 'var(--nav-height)' }}>
       <div className="px-[10%] h-full flex items-center justify-between">
         <Link to="/" onClick={() => window.scrollTo(0, 0)} className="flex items-center">
           {logo ? (
