@@ -38,7 +38,7 @@ export default function Shop() {
           {cards.map((card, i) => {
             const stock = lowestStock(card);
             return (
-              <Link key={i} to={`/product/${config.products.indexOf(card)}`} className="block overflow-hidden border border-[var(--border)] hover:border-[var(--accent)] transition-all group" style={{ backgroundColor: 'var(--nav-bg)' }}>
+              <Link key={i} to={`/product/${config.products.indexOf(card)}`} className="block bg-[var(--card)] overflow-hidden border border-[var(--border)] hover:border-[var(--accent)] transition-all group">
                 <div className="bg-[var(--bg-secondary)] overflow-hidden">
                   {card.images?.[0] ? (
                     <img src={card.images[0]} alt={card.title} className="w-full h-auto object-cover group-hover:scale-105 transition-transform" />
