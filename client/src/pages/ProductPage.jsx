@@ -144,7 +144,14 @@ export default function ProductPage() {
           </h1>
           {product.price > 0 && (
             <p className="text-lg font-semibold text-[var(--accent)] mb-2">
-              ₹{product.price.toFixed(2)}
+              {product.discount > 0 ? (
+                <>
+                  <span className="line-through text-[var(--muted)] text-sm mr-2">₹{product.price.toFixed(2)}</span>
+                  ₹{(product.price * (1 - product.discount / 100)).toFixed(2)}
+                </>
+              ) : (
+                <>₹{product.price.toFixed(2)}</>
+              )}
             </p>
           )}
           <Rating average={avgRating} count={reviewCount} size="md" />

@@ -51,7 +51,16 @@ export default function Shop() {
                 <div className="p-4">
                   <h2 className="text-sm font-bold text-[var(--primary)] mb-1.5">{card.title}</h2>
                   {card.price > 0 && (
-                    <p className="text-xs font-semibold text-[var(--accent)] mb-1">₹{card.price.toFixed(2)}</p>
+                    <p className="text-xs font-semibold text-[var(--accent)] mb-1">
+                      {card.discount > 0 ? (
+                        <>
+                          <span className="line-through text-[var(--muted)] mr-1">₹{card.price.toFixed(2)}</span>
+                          ₹{(card.price * (1 - card.discount / 100)).toFixed(2)}
+                        </>
+                      ) : (
+                        <>₹{card.price.toFixed(2)}</>
+                      )}
+                    </p>
                   )}
                   <ProductRating productIndex={config.products.indexOf(card)} />
                   <p className="text-xs text-[var(--muted)] mb-3 leading-relaxed">{card.synopsis}</p>

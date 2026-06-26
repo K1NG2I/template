@@ -71,7 +71,16 @@ export default function ShopFlash() {
                 <div className="p-3">
                   <h3 className="font-semibold text-sm text-[var(--primary)] mb-0.5">{card.title}</h3>
                   {card.price > 0 && (
-                    <p className="text-xs font-semibold text-[var(--accent)] mb-0.5">₹{card.price.toFixed(2)}</p>
+                    <p className="text-xs font-semibold text-[var(--accent)] mb-0.5">
+                      {card.discount > 0 ? (
+                        <>
+                          <span className="line-through text-[var(--muted)] mr-1">₹{card.price.toFixed(2)}</span>
+                          ₹{(card.price * (1 - card.discount / 100)).toFixed(2)}
+                        </>
+                      ) : (
+                        <>₹{card.price.toFixed(2)}</>
+                      )}
+                    </p>
                   )}
                   <ProductRating productIndex={config.products.indexOf(card)} />
                   <p className="text-xs text-[var(--muted)] leading-relaxed">{card.synopsis}</p>

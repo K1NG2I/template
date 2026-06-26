@@ -241,7 +241,7 @@ function AdminForm({ config, setConfig, password }) {
       const next = JSON.parse(JSON.stringify(prev));
       if (!next.products) next.products = [];
       next.products.push({
-        title: 'New Product', images: [], synopsis: '', description: '', featured: false, price: 0, bestSeller: false, dailyEssential: false, collection: '',
+        title: 'New Product', images: [], synopsis: '', description: '', featured: false, price: 0, discount: 0, bestSeller: false, dailyEssential: false, collection: '',
         sizes: { XS: { available: false, quantity: 0 }, S: { available: false, quantity: 0 }, M: { available: false, quantity: 0 }, L: { available: false, quantity: 0 }, XL: { available: false, quantity: 0 }, XXL: { available: false, quantity: 0 } }
       });
       return next;
@@ -503,8 +503,13 @@ function AdminForm({ config, setConfig, password }) {
               <input type="text" value={card.title} onChange={(e) => updateProductField(i, 'title', e.target.value)} className="w-full bg-[var(--bg-tertiary)] border border-[var(--border)] rounded px-3 py-2 text-sm text-[var(--primary)]" />
             </div>
             <div>
-              <label className="block text-xs text-[var(--muted)] mb-1">Price ($)</label>
+              <label className="block text-xs text-[var(--muted)] mb-1">Price (₹)</label>
               <input type="number" step="0.01" min="0" value={card.price || ''} onChange={(e) => updateProductField(i, 'price', parseFloat(e.target.value) || 0)} className="w-full bg-[var(--bg-tertiary)] border border-[var(--border)] rounded px-3 py-2 text-sm text-[var(--primary)]" />
+            </div>
+            <div>
+              <label className="block text-xs text-[var(--muted)] mb-1">Discount (%)</label>
+              <input type="number" step="1" min="0" max="100" value={card.discount || 0} onChange={(e) => updateProductField(i, 'discount', parseInt(e.target.value) || 0)} className="w-full bg-[var(--bg-tertiary)] border border-[var(--border)] rounded px-3 py-2 text-sm text-[var(--primary)]" />
+              <p className="text-xs text-[var(--muted)] mt-1">Set to 0 for no discount</p>
             </div>
             <div>
               <label className="block text-xs text-[var(--muted)] mb-1">Collection</label>

@@ -66,7 +66,16 @@ export default function BestSellers() {
               </div>
               <h3 className="text-lg font-bold text-[var(--primary)] mb-1">{product.title}</h3>
               {product.price > 0 && (
-                <p className="text-sm font-semibold text-[var(--accent)] mb-1">₹{product.price.toFixed(2)}</p>
+                <p className="text-sm font-semibold text-[var(--accent)] mb-1">
+                  {product.discount > 0 ? (
+                    <>
+                      <span className="line-through text-[var(--muted)] mr-1">₹{product.price.toFixed(2)}</span>
+                      ₹{(product.price * (1 - product.discount / 100)).toFixed(2)}
+                    </>
+                  ) : (
+                    <>₹{product.price.toFixed(2)}</>
+                  )}
+                </p>
               )}
               <ProductRating productIndex={config.products.indexOf(product)} />
               <p className="text-sm text-[var(--muted)] leading-relaxed">{product.synopsis}</p>

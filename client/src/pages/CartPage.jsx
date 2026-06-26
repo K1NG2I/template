@@ -76,7 +76,11 @@ export default function CartPage() {
                 <p className="text-sm font-semibold text-[var(--primary)] truncate">{product?.title || 'Unknown'}</p>
                 <p className="text-xs text-[var(--muted)]">Size: {item.size}</p>
                 {product?.price ? (
-                  <p className="text-xs text-[var(--primary)]">₹{(product.price * item.quantity).toFixed(2)}</p>
+                  <p className="text-xs text-[var(--primary)]">
+                    ₹{product.discount > 0
+                      ? ((product.price * (1 - product.discount / 100)) * item.quantity).toFixed(2)
+                      : (product.price * item.quantity).toFixed(2)}
+                  </p>
                 ) : null}
               </div>
               <div className="flex items-center gap-2">
@@ -93,7 +97,8 @@ export default function CartPage() {
         <p className="text-sm font-bold text-[var(--primary)]">
           Total: ₹{items.reduce((s, i) => {
             const p = products[i.product_index];
-            return s + (p?.price || 0) * i.quantity;
+            const unitPrice = p?.discount > 0 ? (p.price * (1 - p.discount / 100)) : (p?.price || 0);
+            return s + unitPrice * i.quantity;
           }, 0).toFixed(2)}
         </p>
       </div>
