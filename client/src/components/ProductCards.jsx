@@ -24,14 +24,14 @@ export default function ProductCards() {
       {entries.length === 0 ? (
         <p className="text-sm text-[var(--muted)] text-center">No collections yet.</p>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="flex flex-wrap justify-center gap-6">
           {entries.map(([name, prods]) => {
             const images = prods.slice(0, 3).map((p) => p.images?.[0]).filter(Boolean);
             return (
               <Link
                 key={name}
                 to={`/shop?collection=${encodeURIComponent(name)}`}
-                className="block bg-[var(--card)] border border-[var(--border)] p-6 text-center hover:border-[var(--accent)] transition-all group"
+                className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] max-w-md bg-[var(--card)] border border-[var(--border)] p-6 text-center hover:border-[var(--accent)] transition-all group"
               >
                 <div className="relative h-52 mb-4">
                   {images[0] && (
