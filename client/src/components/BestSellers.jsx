@@ -39,28 +39,28 @@ export default function BestSellers() {
       </h2>
       <div className="border border-[var(--border)] overflow-hidden">
         <div className="flex flex-col md:flex-row">
-          <div className="w-full md:w-1/2 aspect-[4/3] md:aspect-auto bg-[var(--bg-secondary)] overflow-hidden">
+          <div className="w-full md:w-1/2 bg-[var(--bg-secondary)] overflow-hidden">
             {images[0] ? (
-              <img src={images[0]} alt={product.title} className="w-full h-full object-cover" />
+              <img src={images[0]} alt={product.title} className="w-full h-auto" />
             ) : (
-              <div className="w-full h-full flex items-center justify-center text-[var(--muted)] text-xs">No Image</div>
+              <div className="w-full h-48 flex items-center justify-center text-[var(--muted)] text-xs">No Image</div>
             )}
           </div>
           <div className="w-full md:w-1/2 flex items-center">
             <div className="px-[10%] py-8 w-full">
-              <div className="relative h-40 mb-4 group">
+              <div className="flex gap-4 mb-4 group">
                 {images[1] ? (
-                  <div className="absolute bottom-0 left-[10%] w-[50%] h-[85%] z-20 overflow-hidden border border-[var(--border)] transition-all group-hover:scale-105">
-                    <img src={images[1]} alt="" className="w-full h-full object-cover" />
+                  <div className="w-1/2 overflow-hidden border border-[var(--border)] transition-all group-hover:scale-105">
+                    <img src={images[1]} alt="" className="w-full h-auto" />
                   </div>
                 ) : images[0] && (
-                  <div className="absolute bottom-0 left-[10%] w-[50%] h-[85%] z-20 overflow-hidden border border-[var(--border)]">
-                    <img src={images[0]} alt="" className="w-full h-full object-cover" />
+                  <div className="w-1/2 overflow-hidden border border-[var(--border)]">
+                    <img src={images[0]} alt="" className="w-full h-auto" />
                   </div>
                 )}
                 {images[2] && (
-                  <div className="absolute bottom-0 right-[10%] w-[45%] h-[70%] z-10 overflow-hidden border border-[var(--border)] opacity-0 group-hover:opacity-100 transition-opacity">
-                    <img src={images[2]} alt="" className="w-full h-full object-cover" />
+                  <div className="w-2/5 overflow-hidden border border-[var(--border)] opacity-0 group-hover:opacity-100 transition-opacity">
+                    <img src={images[2]} alt="" className="w-full h-auto" />
                   </div>
                 )}
               </div>
