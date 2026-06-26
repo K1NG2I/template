@@ -259,7 +259,7 @@ function AdminForm({ config, setConfig, password }) {
   function addShowcaseItem() {
     setConfig((prev) => {
       const next = JSON.parse(JSON.stringify(prev));
-      if (!next.showcase) next.showcase = { heading: 'Showcase', cards: [] };
+      if (!next.showcase) next.showcase = { heading: 'Collection', cards: [] };
       next.showcase.cards.push({ title: 'New Card', image: '', synopsis: '' });
       return next;
     });
@@ -517,7 +517,7 @@ function AdminForm({ config, setConfig, password }) {
         <button onClick={() => addProduct()} className="text-xs text-[var(--primary)] opacity-60 hover:opacity-100">+ Add Product</button>
       </Section>
 
-      <Section title="Showcase">
+      <Section title="Collection">
         <div>
           <label className="block text-xs text-[var(--muted)] mb-1">Heading</label>
           <input type="text" value={config.showcase?.heading || ''} onChange={(e) => update('showcase.heading', e.target.value)} className="w-full bg-[var(--bg-secondary)] border border-[var(--border)] px-3 py-2 text-sm text-[var(--primary)]" />

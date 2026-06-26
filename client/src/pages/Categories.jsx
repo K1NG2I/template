@@ -9,8 +9,8 @@ export default function Categories() {
   products.forEach((p) => {
     const name = p.collection?.trim();
     if (!name) return;
-    if (!collections[name]) collections[name] = 0;
-    collections[name]++;
+    if (!collections[name]) collections[name] = [];
+    collections[name].push(p);
   });
 
   const entries = Object.entries(collections);
@@ -23,16 +23,36 @@ export default function Categories() {
         <p className="text-sm text-[var(--muted)] text-center">No collections yet.</p>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {entries.map(([name, count]) => (
-            <Link
-              key={name}
-              to={`/shop?collection=${encodeURIComponent(name)}`}
-              className="block bg-[var(--card)] border border-[var(--border)] p-8 text-center hover:border-[var(--accent)] transition-all"
-            >
-              <h2 className="text-lg font-bold text-[var(--primary)] mb-2">{name}</h2>
-              <span className="text-xs text-[var(--muted)]">{count} product{count !== 1 ? 's' : ''}</span>
-            </Link>
-          ))}
+          {entries.map(([name, prods]) => {
+            const images = prods.slice(0, 3).map((p) => p.images?.[0]).filter(Boolean);
+            return (
+              <Link
+                key={name}
+                to={`/shop?collection=${encodeURIComponent(name)}`}
+                className="block bg-[var(--card)] border border-[var(--border)] p-6 text-center hover:border-[var(--accent)] transition-all group"
+              >
+                <div className="relative h-52 mb-4">
+                  {images[0] && (
+                    <div className="absolute bottom-0 left-[5%] w-[35%] h-[55%] z-10 overflow-hidden border border-[var(--border)] group-hover:border-[var(--accent)] transition-all">
+                      <img src={images[0]} alt="" className="w-full h-full object-cover" />
+                    </div>
+                  )}
+                  {(images[1] || images[0]) && (
+                    <div className="absolute bottom-[18%] left-[18%] w-[64%] h-[75%] z-20 overflow-hidden border border-[var(--border)] group-hover:border-[var(--accent)] transition-all shadow-lg">
+                      <img src={images[1] || images[0]} alt="" className="w-full h-full object-cover" />
+                    </div>
+                  )}
+                  {images[2] && (
+                    <div className="absolute bottom-0 right-[5%] w-[35%] h-[55%] z-10 overflow-hidden border border-[var(--border)] group-hover:border-[var(--accent)] transition-all">
+                      <img src={images[2]} alt="" className="w-full h-full object-cover" />
+                    </div>
+                  )}
+                </div>
+                <h2 className="text-lg font-bold text-[var(--primary)] mb-1">{name}</h2>
+                <span className="text-xs text-[var(--muted)]">{prods.length} product{prods.length !== 1 ? 's' : ''}</span>
+              </Link>
+            );
+          })}
         </div>
       )}
     </div>
