@@ -6,6 +6,7 @@ import ProductCards from '../components/ProductCards';
 import BestSellers from '../components/BestSellers';
 import DailyEssentials from '../components/DailyEssentials';
 import AboutSection from '../components/AboutSection';
+import NotesSection from '../components/NotesSection';
 
 export default function Home() {
   const { config } = useConfig();
@@ -28,6 +29,7 @@ export default function Home() {
       <BestSellers />
       <ProductCards />
       <AboutSection />
+      <NotesSection />
     </>
   );
 }

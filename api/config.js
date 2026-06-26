@@ -14,6 +14,7 @@ const DEFAULT_CONFIG = {
   products: [],
   showcase: { heading: 'Showcase', cards: [] },
   about: { text: '', rules: [] },
+  notes: { heading: 'Important Notes', rules: [] },
   footer: { text: '', email: '' },
   colors: {
     dark: { '--bg': '#2c2c2c', '--card': '#2c2c2c', '--accent': '#ECAA2F', '--muted': '#c7c7d7', '--primary': '#ffffff', '--nav-bg': '#2c2c2c', '--bg-secondary': '#222222', '--bg-tertiary': '#1a1a1a', '--border': 'rgba(255, 255, 255, 0.1)' },

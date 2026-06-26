@@ -289,6 +289,15 @@ function AdminForm({ config, setConfig, password }) {
     });
   }
 
+  function addNote() {
+    setConfig((prev) => {
+      const next = JSON.parse(JSON.stringify(prev));
+      if (!next.notes) next.notes = { heading: 'Important Notes', rules: [] };
+      next.notes.rules.push('New note');
+      return next;
+    });
+  }
+
   function updateRule(index, value) {
     setConfig((prev) => {
       const next = JSON.parse(JSON.stringify(prev));
@@ -594,6 +603,34 @@ function AdminForm({ config, setConfig, password }) {
             ))}
           </div>
           <button onClick={addRule} className="mt-2 text-xs text-[var(--primary)] opacity-60 hover:opacity-100">+ Add Rule</button>
+        </div>
+      </Section>
+
+      <Section title="Notes">
+        <div>
+          <label className="block text-xs text-[var(--muted)] mb-1">Heading</label>
+          <input type="text" value={config.notes?.heading || ''} onChange={(e) => update('notes.heading', e.target.value)} className="w-full bg-[var(--bg-secondary)] border border-[var(--border)] rounded px-3 py-2 text-sm text-[var(--primary)]" />
+        </div>
+        <div>
+          <label className="block text-xs text-[var(--muted)] mb-1">Notes List</label>
+          <div className="space-y-2">
+            {(config.notes?.rules || []).map((rule, i) => (
+              <div key={i} className="flex gap-2 items-center">
+                <input type="text" value={rule} onChange={(e) => {
+                  const next = JSON.parse(JSON.stringify(config));
+                  next.notes.rules[i] = e.target.value;
+                  setConfig(next);
+                }} className="flex-1 bg-[var(--bg-secondary)] border border-[var(--border)] rounded px-3 py-2 text-sm text-[var(--primary)]" />
+                <button onClick={() => {
+                  const next = JSON.parse(JSON.stringify(config));
+                  next.notes.rules.splice(i, 1);
+                  setConfig(next);
+                }} className="text-[var(--primary)] opacity-60 hover:opacity-100 text-xs">Remove</button>
+              </div>
+            ))}
+          </div>
+          <button onClick={addNote} className="mt-2 text-xs text-[var(--primary)] opacity-60 hover:opacity-100">+ Add Note</button>
+          <p className="text-xs text-[var(--muted)] mt-1">This section uses navbar background color</p>
         </div>
       </Section>
 

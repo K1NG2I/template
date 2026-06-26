@@ -168,6 +168,15 @@
       "Eco-friendly packaging on all orders"
     ]
   },
+  "notes": {
+    "heading": "Important Notes",
+    "rules": [
+      "Orders are processed within 24 hours",
+      "Delivery typically takes 3-5 business days",
+      "International shipping available on request",
+      "Gift wrapping available at checkout"
+    ]
+  },
   "fonts": {
     "family": "Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
     "googleFontLink": ""
