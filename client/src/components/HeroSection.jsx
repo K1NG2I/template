@@ -45,12 +45,14 @@ export default function HeroSection() {
         <p className="text-[clamp(14px,1.6vw,20px)] text-[var(--muted)] mb-6 max-w-xl">
           {subtext}
         </p>
-        <Link
-          to={ctaLink}
-          className="inline-block bg-black text-white dark:bg-white dark:text-black px-6 py-2.5 text-sm font-semibold hover:opacity-90 transition-opacity"
-        >
-          {ctaText}
-        </Link>
+        {ctaLink && (
+          <Link
+            to={ctaLink}
+            className="inline-block bg-black text-white dark:bg-white dark:text-black px-6 py-2.5 text-sm font-semibold hover:opacity-90 transition-opacity"
+          >
+            {ctaText}
+          </Link>
+        )}
       </div>
 
       {!showContent && (
