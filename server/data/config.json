@@ -34,7 +34,15 @@
       ],
       "synopsis": "Exceptional quality meets modern design.",
       "description": "Experience unmatched craftsmanship with Product One.",
-      "featured": true
+      "featured": true,
+      "sizes": {
+        "XS": { "available": false, "quantity": 0 },
+        "S": { "available": true, "quantity": 10 },
+        "M": { "available": true, "quantity": 3 },
+        "L": { "available": true, "quantity": 8 },
+        "XL": { "available": false, "quantity": 0 },
+        "XXL": { "available": false, "quantity": 0 }
+      }
     },
     {
       "title": "Product Two",
@@ -44,7 +52,15 @@
       ],
       "synopsis": "Crafted for durability and everyday comfort.",
       "description": "Product Two is built to last.",
-      "featured": true
+      "featured": true,
+      "sizes": {
+        "XS": { "available": true, "quantity": 1 },
+        "S": { "available": true, "quantity": 5 },
+        "M": { "available": true, "quantity": 12 },
+        "L": { "available": true, "quantity": 7 },
+        "XL": { "available": true, "quantity": 4 },
+        "XXL": { "available": false, "quantity": 0 }
+      }
     },
     {
       "title": "Product Three",
@@ -54,7 +70,15 @@
       ],
       "synopsis": "Innovative features at an unbeatable value.",
       "description": "Product Three brings cutting-edge innovation.",
-      "featured": true
+      "featured": true,
+      "sizes": {
+        "XS": { "available": true, "quantity": 20 },
+        "S": { "available": true, "quantity": 15 },
+        "M": { "available": false, "quantity": 0 },
+        "L": { "available": false, "quantity": 0 },
+        "XL": { "available": false, "quantity": 0 },
+        "XXL": { "available": false, "quantity": 0 }
+      }
     },
     {
       "title": "Product Four",
@@ -65,7 +89,15 @@
       ],
       "synopsis": "Timeless style with a contemporary twist.",
       "description": "Product Four combines timeless design with modern functionality.",
-      "featured": true
+      "featured": true,
+      "sizes": {
+        "XS": { "available": false, "quantity": 0 },
+        "S": { "available": false, "quantity": 0 },
+        "M": { "available": true, "quantity": 3 },
+        "L": { "available": true, "quantity": 6 },
+        "XL": { "available": true, "quantity": 9 },
+        "XXL": { "available": true, "quantity": 2 }
+      }
     },
     {
       "title": "New Product",
@@ -74,7 +106,15 @@
       ],
       "synopsis": "",
       "description": "",
-      "featured": false
+      "featured": false,
+      "sizes": {
+        "XS": { "available": false, "quantity": 0 },
+        "S": { "available": false, "quantity": 0 },
+        "M": { "available": false, "quantity": 0 },
+        "L": { "available": false, "quantity": 0 },
+        "XL": { "available": false, "quantity": 0 },
+        "XXL": { "available": false, "quantity": 0 }
+      }
     }
   ],
   "showcase": {

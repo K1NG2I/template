@@ -226,11 +226,24 @@ function AdminForm({ config, setConfig, password }) {
     });
   }
 
+  function updateProductSize(index, size, field, value) {
+    setConfig((prev) => {
+      const next = JSON.parse(JSON.stringify(prev));
+      if (!next.products[index].sizes) next.products[index].sizes = {};
+      if (!next.products[index].sizes[size]) next.products[index].sizes[size] = { available: false, quantity: 0 };
+      next.products[index].sizes[size][field] = value;
+      return next;
+    });
+  }
+
   function addProduct() {
     setConfig((prev) => {
       const next = JSON.parse(JSON.stringify(prev));
       if (!next.products) next.products = [];
-      next.products.push({ title: 'New Product', images: [], synopsis: '', description: '', featured: false });
+      next.products.push({
+        title: 'New Product', images: [], synopsis: '', description: '', featured: false,
+        sizes: { XS: { available: false, quantity: 0 }, S: { available: false, quantity: 0 }, M: { available: false, quantity: 0 }, L: { available: false, quantity: 0 }, XL: { available: false, quantity: 0 }, XXL: { available: false, quantity: 0 } }
+      });
       return next;
     });
   }
@@ -466,6 +479,34 @@ function AdminForm({ config, setConfig, password }) {
             <div>
               <label className="block text-xs text-[var(--muted)] mb-1">Description</label>
               <textarea value={card.description || ''} onChange={(e) => updateProductField(i, 'description', e.target.value)} className="w-full bg-[var(--bg-tertiary)] border border-[var(--border)] rounded px-3 py-2 text-sm text-[var(--primary)]" rows={3} />
+            </div>
+            <div>
+              <label className="block text-xs text-[var(--muted)] mb-2">Sizes</label>
+              <div className="grid grid-cols-3 gap-2 text-xs">
+                {['XS', 'S', 'M', 'L', 'XL', 'XXL'].map((size) => {
+                  const s = card.sizes?.[size] || { available: false, quantity: 0 };
+                  return (
+                    <div key={size} className="flex items-center gap-2 bg-[var(--bg-tertiary)] p-2">
+                      <span className="w-6 text-[var(--primary)] font-semibold">{size}</span>
+                      <input
+                        type="checkbox"
+                        checked={!!s.available}
+                        onChange={(e) => updateProductSize(i, size, 'available', e.target.checked)}
+                        className="accent-[var(--accent)]"
+                      />
+                      {s.available && (
+                        <input
+                          type="number"
+                          min="0"
+                          value={s.quantity}
+                          onChange={(e) => updateProductSize(i, size, 'quantity', Math.max(0, Number(e.target.value)))}
+                          className="w-14 bg-[var(--bg-secondary)] border border-[var(--border)] px-1.5 py-1 text-xs text-[var(--primary)] text-center"
+                        />
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
         ))}
