@@ -29,7 +29,7 @@ export default function Shop() {
   return (
     <div className="py-8">
       <h1 className="text-[clamp(24px,3.2vw,34px)] font-bold text-center text-[var(--primary)] mb-2">
-        {collection ? `Collection: ₹{collection}` : 'Shop'}
+        {collection ? `Collection: ${collection}` : 'Shop'}
       </h1>
       {cards.length === 0 ? (
         <p className="text-sm text-[var(--muted)] text-center mt-10">No products found.</p>
@@ -38,7 +38,7 @@ export default function Shop() {
           {cards.map((card, i) => {
             const stock = lowestStock(card);
             return (
-              <Link key={i} to={`/product/₹{config.products.indexOf(card)}`} className="block bg-[var(--card)] overflow-hidden border border-[var(--border)] hover:border-[var(--accent)] transition-all group">
+              <Link key={i} to={`/product/${config.products.indexOf(card)}`} className="block bg-[var(--card)] overflow-hidden border border-[var(--border)] hover:border-[var(--accent)] transition-all group">
                 <div className="aspect-[4/3] bg-[var(--bg-secondary)] overflow-hidden">
                   {card.images?.[0] ? (
                     <img src={card.images[0]} alt={card.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />

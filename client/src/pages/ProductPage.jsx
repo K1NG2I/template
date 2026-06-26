@@ -30,7 +30,7 @@ export default function ProductPage() {
   const [addedToCart, setAddedToCart] = useState(false);
 
   useEffect(() => {
-    fetch(`/api/reviews?product=₹{id}`)
+    fetch(`/api/reviews?product=${id}`)
       .then((r) => r.json())
       .then((d) => {
         setReviews(d.reviews || []);
@@ -84,13 +84,13 @@ export default function ProductPage() {
     const token = (await supabase.auth.getSession()).data.session?.access_token;
     await fetch('/api/reviews', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ₹{token}` },
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
       body: JSON.stringify({ product_index: Number(id), rating, comment }),
     });
     setComment('');
     setRating(5);
     setAdding(false);
-    const r = await fetch(`/api/reviews?product=₹{id}`).then((res) => res.json());
+    const r = await fetch(`/api/reviews?product=${id}`).then((res) => res.json());
     setReviews(r.reviews || []);
     setAvgRating(r.average || 0);
     setReviewCount(r.count || 0);
@@ -100,10 +100,10 @@ export default function ProductPage() {
     const token = (await supabase.auth.getSession()).data.session?.access_token;
     await fetch('/api/reviews', {
       method: 'DELETE',
-      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ₹{token}` },
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
       body: JSON.stringify({ id: reviewId }),
     });
-    const r = await fetch(`/api/reviews?product=₹{id}`).then((res) => res.json());
+    const r = await fetch(`/api/reviews?product=${id}`).then((res) => res.json());
     setReviews(r.reviews || []);
     setAvgRating(r.average || 0);
     setReviewCount(r.count || 0);
@@ -128,7 +128,7 @@ export default function ProductPage() {
                 <button
                   key={i}
                   onClick={() => setSelectedImage(i)}
-                  className={`w-16 h-16 overflow-hidden border-2 flex-shrink-0 transition-all ₹{
+                  className={`w-16 h-16 overflow-hidden border-2 flex-shrink-0 transition-all ${
                     i === selectedImage ? 'border-[var(--accent)]' : 'border-[var(--border)] hover:border-[var(--muted)]'
                   }`}
                 >
@@ -162,7 +162,7 @@ export default function ProductPage() {
                   <button
                     key={size}
                     onClick={() => setSelectedSize(size)}
-                    className={`px-4 py-2 text-sm border transition-all ₹{
+                    className={`px-4 py-2 text-sm border transition-all ${
                       selectedSize === size
                         ? 'bg-[var(--primary)] text-[var(--bg)] border-[var(--primary)]'
                         : 'bg-transparent text-[var(--primary)] border-[var(--border)] hover:border-[var(--primary)]'
@@ -186,7 +186,7 @@ export default function ProductPage() {
             user ? (
               <button
                 onClick={addToCart}
-                className={`inline-block self-start px-8 py-3 text-sm font-semibold transition-all ₹{
+                className={`inline-block self-start px-8 py-3 text-sm font-semibold transition-all ${
                   addedToCart
                     ? 'bg-green-600 text-white'
                     : 'bg-[var(--primary)] text-[var(--bg)] hover:opacity-90'
@@ -200,7 +200,7 @@ export default function ProductPage() {
               </span>
             )
           ) : (
-            <span className={`inline-block self-start px-8 py-3 text-sm font-semibold ₹{
+            <span className={`inline-block self-start px-8 py-3 text-sm font-semibold ${
               stock === null
                 ? 'bg-[var(--border)] text-[var(--muted)] cursor-not-allowed'
                 : 'bg-[var(--primary)] text-[var(--bg)] cursor-default'
@@ -272,7 +272,7 @@ export default function ProductPage() {
             return (
               <Link
                 key={i}
-                to={`/product/₹{products.indexOf(card)}`}
+                to={`/product/${products.indexOf(card)}`}
                 className="group bg-[var(--card)] overflow-hidden border border-[var(--border)] hover:border-[var(--accent)] transition-all"
               >
                 <div className="aspect-[4/3] bg-[var(--bg-secondary)] overflow-hidden">
