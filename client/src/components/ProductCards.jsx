@@ -1,39 +1,62 @@
+import { Link } from 'react-router-dom';
 import { useConfig } from '../context/ConfigContext';
 
 export default function ProductCards() {
   const { config } = useConfig();
-  const heading = config.showcase?.heading || 'Showcase';
-  const cards = config.showcase?.cards || [];
+  const heading = config.showcase?.heading || 'Collection';
+  const products = config.products || [];
+
+  const collections = {};
+  products.forEach((p) => {
+    const name = p.collection?.trim();
+    if (!name) return;
+    if (!collections[name]) collections[name] = [];
+    collections[name].push(p);
+  });
+
+  const entries = Object.entries(collections);
 
   return (
-    <section className="py-12 space-y-2">
+    <section className="py-12">
       <h2 className="text-[clamp(24px,3.2vw,34px)] font-bold text-center mb-8 text-[var(--primary)]">
         {heading}
       </h2>
-      {cards.map((card, i) => (
-        <div
-          key={i}
-          className={`flex flex-col ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-2 items-center bg-[var(--card)] border border-[var(--border)] p-2`}
-        >
-          <div className="w-full md:w-[30%] aspect-[4/3] bg-[var(--bg-secondary)] overflow-hidden flex-shrink-0">
-            {card.image ? (
-              <img
-                src={card.image}
-                alt={card.title}
-                className="w-full h-full object-cover"
-              />
-            ) : (
-              <div className="w-full h-full flex items-center justify-center text-[var(--muted)] text-xs">
-                No Image
-              </div>
-            )}
-          </div>
-          <div className="w-full md:w-[70%]">
-            <h3 className="text-base font-bold text-[var(--primary)] mb-2">{card.title}</h3>
-            <p className="text-sm text-[var(--muted)] leading-relaxed">{card.synopsis}</p>
-          </div>
+      {entries.length === 0 ? (
+        <p className="text-sm text-[var(--muted)] text-center">No collections yet.</p>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {entries.map(([name, prods]) => {
+            const images = prods.slice(0, 3).map((p) => p.images?.[0]).filter(Boolean);
+            return (
+              <Link
+                key={name}
+                to={`/shop?collection=${encodeURIComponent(name)}`}
+                className="block bg-[var(--card)] border border-[var(--border)] p-6 text-center hover:border-[var(--accent)] transition-all group"
+              >
+                <div className="relative h-52 mb-4">
+                  {images[0] && (
+                    <div className="absolute bottom-0 left-[5%] w-[35%] h-[55%] z-10 overflow-hidden border border-[var(--border)] group-hover:border-[var(--accent)] transition-all">
+                      <img src={images[0]} alt="" className="w-full h-full object-cover" />
+                    </div>
+                  )}
+                  {(images[1] || images[0]) && (
+                    <div className="absolute bottom-[18%] left-[18%] w-[64%] h-[75%] z-20 overflow-hidden border border-[var(--border)] group-hover:border-[var(--accent)] transition-all shadow-lg">
+                      <img src={images[1] || images[0]} alt="" className="w-full h-full object-cover" />
+                    </div>
+                  )}
+                  {images[2] && (
+                    <div className="absolute bottom-0 right-[5%] w-[35%] h-[55%] z-10 overflow-hidden border border-[var(--border)] group-hover:border-[var(--accent)] transition-all">
+                      <img src={images[2]} alt="" className="w-full h-full object-cover" />
+                    </div>
+                  )}
+                </div>
+                <h2 className="text-lg font-bold text-[var(--primary)] mb-1">{name}</h2>
+                <span className="text-xs text-[var(--muted)]">{prods.length} product{prods.length !== 1 ? 's' : ''}</span>
+              </Link>
+            );
+          })}
         </div>
-      ))}
+      )}
     </section>
   );
 }
