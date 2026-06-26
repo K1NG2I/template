@@ -105,7 +105,7 @@ export default function ProductPage() {
               ? 'bg-[var(--border)] text-[var(--muted)] cursor-not-allowed'
               : 'bg-[var(--primary)] text-[var(--bg)] cursor-default'
           }`}>
-            {stock === null ? 'Out of Stock' : 'Shop Now'}
+            {stock === null ? 'Out of Stock' : 'Buy It Now'}
           </span>
         </div>
       </div>

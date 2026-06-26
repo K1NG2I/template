@@ -11,6 +11,10 @@
       {
         "label": "Shop",
         "path": "/shop"
+      },
+      {
+        "label": "Categories",
+        "path": "/categories"
       }
     ]
   },
@@ -19,7 +23,7 @@
     "posterImage": "/assets/images/1782406938451-349997885.HEIC",
     "headline": "Welcome to Our Store",
     "subtext": "Discover amazing products tailored just for you",
-    "ctaText": "Shop Now",
+    "ctaText": "Buy It Now",
     "ctaLink": "/shop"
   },
   "shopFlash": {
@@ -35,6 +39,7 @@
       "synopsis": "Exceptional quality meets modern design.",
       "description": "Experience unmatched craftsmanship with Product One.",
       "featured": true,
+      "collection": "Summer",
       "sizes": {
         "XS": { "available": false, "quantity": 0 },
         "S": { "available": true, "quantity": 10 },
@@ -53,6 +58,7 @@
       "synopsis": "Crafted for durability and everyday comfort.",
       "description": "Product Two is built to last.",
       "featured": true,
+      "collection": "Summer",
       "sizes": {
         "XS": { "available": true, "quantity": 1 },
         "S": { "available": true, "quantity": 5 },
@@ -71,6 +77,7 @@
       "synopsis": "Innovative features at an unbeatable value.",
       "description": "Product Three brings cutting-edge innovation.",
       "featured": true,
+      "collection": "Accessories",
       "sizes": {
         "XS": { "available": true, "quantity": 20 },
         "S": { "available": true, "quantity": 15 },
@@ -90,6 +97,7 @@
       "synopsis": "Timeless style with a contemporary twist.",
       "description": "Product Four combines timeless design with modern functionality.",
       "featured": true,
+      "collection": "Accessories",
       "sizes": {
         "XS": { "available": false, "quantity": 0 },
         "S": { "available": false, "quantity": 0 },
@@ -107,6 +115,7 @@
       "synopsis": "",
       "description": "",
       "featured": false,
+      "collection": "",
       "sizes": {
         "XS": { "available": false, "quantity": 0 },
         "S": { "available": false, "quantity": 0 },

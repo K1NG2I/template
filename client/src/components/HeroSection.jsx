@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useConfig } from '../context/ConfigContext';
 
@@ -7,6 +7,10 @@ export default function HeroSection() {
   const { video, posterImage, headline, subtext, ctaText, ctaLink } = config.hero;
   const [showContent, setShowContent] = useState(false);
   const videoRef = useRef(null);
+
+  useEffect(() => {
+    if (!video) setShowContent(true);
+  }, [video]);
 
   return (
     <section className="relative h-screen w-full overflow-hidden bg-black">

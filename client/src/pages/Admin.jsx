@@ -241,7 +241,7 @@ function AdminForm({ config, setConfig, password }) {
       const next = JSON.parse(JSON.stringify(prev));
       if (!next.products) next.products = [];
       next.products.push({
-        title: 'New Product', images: [], synopsis: '', description: '', featured: false,
+        title: 'New Product', images: [], synopsis: '', description: '', featured: false, collection: '',
         sizes: { XS: { available: false, quantity: 0 }, S: { available: false, quantity: 0 }, M: { available: false, quantity: 0 }, L: { available: false, quantity: 0 }, XL: { available: false, quantity: 0 }, XXL: { available: false, quantity: 0 } }
       });
       return next;
@@ -463,6 +463,10 @@ function AdminForm({ config, setConfig, password }) {
             <div>
               <label className="block text-xs text-[var(--muted)] mb-1">Title</label>
               <input type="text" value={card.title} onChange={(e) => updateProductField(i, 'title', e.target.value)} className="w-full bg-[var(--bg-tertiary)] border border-[var(--border)] rounded px-3 py-2 text-sm text-[var(--primary)]" />
+            </div>
+            <div>
+              <label className="block text-xs text-[var(--muted)] mb-1">Collection</label>
+              <input type="text" value={card.collection || ''} onChange={(e) => updateProductField(i, 'collection', e.target.value)} className="w-full bg-[var(--bg-tertiary)] border border-[var(--border)] rounded px-3 py-2 text-sm text-[var(--primary)]" placeholder="e.g. Summer, Accessories" />
             </div>
             <div>
               <label className="block text-xs text-[var(--muted)] mb-1">Images</label>
