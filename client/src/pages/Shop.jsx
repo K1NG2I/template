@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useConfig } from '../context/ConfigContext';
 
@@ -13,6 +14,11 @@ export default function Shop() {
   const { config } = useConfig();
   const [searchParams] = useSearchParams();
   const collection = searchParams.get('collection');
+
+  useEffect(() => {
+    document.title = 'Shop - Dachima';
+  }, []);
+
   let cards = config.products || [];
 
   if (collection) {

@@ -1,8 +1,14 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useConfig } from '../context/ConfigContext';
 
 export default function Categories() {
   const { config } = useConfig();
+
+  useEffect(() => {
+    document.title = 'Category - Dachima';
+  }, []);
+
   const products = config.products || [];
 
   const collections = {};
