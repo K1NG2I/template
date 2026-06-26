@@ -241,7 +241,7 @@ function AdminForm({ config, setConfig, password }) {
       const next = JSON.parse(JSON.stringify(prev));
       if (!next.products) next.products = [];
       next.products.push({
-        title: 'New Product', images: [], synopsis: '', description: '', featured: false, collection: '',
+        title: 'New Product', images: [], synopsis: '', description: '', featured: false, bestSeller: false, dailyEssential: false, collection: '',
         sizes: { XS: { available: false, quantity: 0 }, S: { available: false, quantity: 0 }, M: { available: false, quantity: 0 }, L: { available: false, quantity: 0 }, XL: { available: false, quantity: 0 }, XXL: { available: false, quantity: 0 } }
       });
       return next;
@@ -459,6 +459,24 @@ function AdminForm({ config, setConfig, password }) {
                 className="accent-[var(--accent)]"
               />
               <span className="text-xs text-[var(--muted)]">Featured</span>
+            </label>
+            <label className="flex items-center gap-2 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={!!card.bestSeller}
+                onChange={(e) => updateProductField(i, 'bestSeller', e.target.checked)}
+                className="accent-[var(--accent)]"
+              />
+              <span className="text-xs text-[var(--muted)]">Best Seller</span>
+            </label>
+            <label className="flex items-center gap-2 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={!!card.dailyEssential}
+                onChange={(e) => updateProductField(i, 'dailyEssential', e.target.checked)}
+                className="accent-[var(--accent)]"
+              />
+              <span className="text-xs text-[var(--muted)]">Daily Essential</span>
             </label>
             <div>
               <label className="block text-xs text-[var(--muted)] mb-1">Title</label>

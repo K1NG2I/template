@@ -39,6 +39,8 @@
       "synopsis": "Exceptional quality meets modern design.",
       "description": "Experience unmatched craftsmanship with Product One.",
       "featured": true,
+      "bestSeller": true,
+      "dailyEssential": false,
       "collection": "Summer",
       "sizes": {
         "XS": { "available": false, "quantity": 0 },
@@ -58,6 +60,8 @@
       "synopsis": "Crafted for durability and everyday comfort.",
       "description": "Product Two is built to last.",
       "featured": true,
+      "bestSeller": false,
+      "dailyEssential": true,
       "collection": "Summer",
       "sizes": {
         "XS": { "available": true, "quantity": 1 },
@@ -77,9 +81,11 @@
       "synopsis": "Innovative features at an unbeatable value.",
       "description": "Product Three brings cutting-edge innovation.",
       "featured": true,
+      "bestSeller": false,
+      "dailyEssential": true,
       "collection": "Accessories",
       "sizes": {
-        "XS": { "available": true, "quantity": 20 },
+        "XS": { "available": false, "quantity": 0 },
         "S": { "available": true, "quantity": 15 },
         "M": { "available": false, "quantity": 0 },
         "L": { "available": false, "quantity": 0 },
@@ -115,6 +121,8 @@
       "synopsis": "",
       "description": "",
       "featured": false,
+      "bestSeller": false,
+      "dailyEssential": false,
       "collection": "",
       "sizes": {
         "XS": { "available": false, "quantity": 0 },
