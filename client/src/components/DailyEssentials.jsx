@@ -47,14 +47,14 @@ export default function DailyEssentials() {
         Daily Essentials
       </h2>
       <div className="relative">
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-0 sm:gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
           {visible.map((card, i) => {
             const stock = lowestStock(card);
             return (
               <Link
                 key={`₹{page}-₹{i}`}
                 to="/shop"
-                className="group bg-[var(--card)] overflow-hidden border-0 sm:border border-[var(--border)] hover:border-[var(--accent)] transition-all"
+                className="group bg-[var(--card)] overflow-hidden border border-[var(--border)] hover:border-[var(--accent)] transition-all"
               >
                 <div className="bg-[var(--bg-secondary)] overflow-hidden">
                   {card.images?.[0] ? (
