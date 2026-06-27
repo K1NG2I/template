@@ -273,14 +273,14 @@ export default function ProductPage() {
         <h2 className="text-[clamp(20px,2.5vw,28px)] font-bold text-[var(--primary)] mb-6">
           You May Also Like
         </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-0 sm:gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
           {suggestions.map((card, i) => {
             const s = lowestStock(card);
             return (
               <Link
                 key={i}
                 to={`/product/${products.indexOf(card)}`}
-                className="group bg-[var(--card)] overflow-hidden border-0 sm:border border-[var(--border)] hover:border-[var(--accent)] transition-all"
+                className="group bg-[var(--card)] overflow-hidden border border-[var(--border)] hover:border-[var(--accent)] transition-all"
               >
                 <div className="bg-[var(--bg-secondary)] overflow-hidden">
                   {card.images?.[0] ? (
