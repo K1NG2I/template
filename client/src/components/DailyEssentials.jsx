@@ -47,18 +47,18 @@ export default function DailyEssentials() {
         Daily Essentials
       </h2>
       <div className="relative">
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-0 sm:gap-4">
           {visible.map((card, i) => {
             const stock = lowestStock(card);
             return (
               <Link
                 key={`₹{page}-₹{i}`}
                 to="/shop"
-                className="group bg-[var(--card)] overflow-hidden border border-[var(--border)] hover:border-[var(--accent)] transition-all"
+                className="group bg-[var(--card)] overflow-hidden border-0 sm:border border-[var(--border)] hover:border-[var(--accent)] transition-all"
               >
-                <div className="aspect-[3/4] bg-[var(--bg-secondary)] overflow-hidden">
+                <div className="bg-[var(--bg-secondary)] overflow-hidden">
                   {card.images?.[0] ? (
-                    <img src={card.images[0]} alt={card.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
+                    <img src={card.images[0]} alt={card.title} className="w-full h-auto group-hover:scale-105 transition-transform" />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center text-[var(--muted)] text-xs">No Image</div>
                   )}
