@@ -112,18 +112,18 @@ export default function ProductPage() {
   return (
     <div className="py-8 space-y-12">
       <div className="flex flex-col md:flex-row gap-8">
-        <div className="w-full md:w-1/2 flex gap-4">
-          <div className="flex-1 bg-[var(--bg-secondary)] overflow-hidden">
+        <div className="w-full md:w-1/2">
+          <div className="bg-[var(--bg-secondary)] overflow-hidden">
             {images[selectedImage] ? (
               <img src={images[selectedImage]} alt={product.title} className="w-full h-auto" />
             ) : (
-              <div className="w-full h-full flex items-center justify-center text-[var(--muted)] text-sm">
+              <div className="w-full aspect-square flex items-center justify-center text-[var(--muted)] text-sm">
                 No Image
               </div>
             )}
           </div>
           {images.length > 1 && (
-            <div className="flex flex-col gap-2">
+            <div className="flex gap-2 mt-2">
               {images.map((img, i) => (
                 <button
                   key={i}
