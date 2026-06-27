@@ -34,11 +34,11 @@ export default function Shop() {
       {cards.length === 0 ? (
         <p className="text-sm text-[var(--muted)] text-center mt-10">No products found.</p>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0 sm:gap-6">
           {cards.map((card, i) => {
             const stock = lowestStock(card);
             return (
-              <Link key={i} to={`/product/${config.products.indexOf(card)}`} className="block bg-[var(--card)] overflow-hidden border border-[var(--border)] hover:border-[var(--accent)] transition-all group">
+              <Link key={i} to={`/product/${config.products.indexOf(card)}`} className="block bg-[var(--card)] overflow-hidden border-0 sm:border border-[var(--border)] hover:border-[var(--accent)] transition-all group">
                 <div className="bg-[var(--bg-secondary)] overflow-hidden">
                   {card.images?.[0] ? (
                     <img src={card.images[0]} alt={card.title} className="w-full h-auto object-cover group-hover:scale-105 transition-transform" />
